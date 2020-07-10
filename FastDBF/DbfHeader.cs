@@ -602,9 +602,11 @@ namespace SocialExplorer.IO.FastDBF
             {
 
                 // read the field name				
-                char[] buffer = new char[11];
-                buffer = reader.ReadChars(11);
-                string sFieldName = new string(buffer);
+                //char[] buffer = new char[11];
+                //buffer = reader.ReadChars(11);
+                //string sFieldName = new string(buffer);
+                byte[] bytes = reader.ReadBytes(11);
+                string sFieldName = Encoding.Default.GetString(bytes);
                 int nullPoint = sFieldName.IndexOf((char)0);
                 if (nullPoint != -1)
                     sFieldName = sFieldName.Substring(0, nullPoint);
